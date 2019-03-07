@@ -2,13 +2,13 @@
     <a-layout :style="{background:'#f1f3f3',minHeight:'760px'}">
         <a-layout-content>
             <a-row>
-                <a-col type="flex" justify="space-around" class="login-box">
+                <a-col type="flex" justify="space-around" class="login-box" align="middle">
                 <img src="@/assets/logo.png" alt class="logo">
                 </a-col>
             </a-row>
             <a-row type="flex" justify="space-around" align="middle">
-                <a-col :span="8">
-                    <PasswordResetForm></PasswordResetForm>
+                <a-col :xs="12" :md="12" :lg="5">
+                    <PasswordLostForm></PasswordLostForm>
                 </a-col>
             </a-row>
         </a-layout-content>
@@ -16,16 +16,15 @@
 </template>
 
 <script>
-import PasswordResetForm from '@/components/PasswordResetForm.vue'
+    import PasswordLostForm from '@/components/auth/PasswordLostForm.vue'
     export default {
-        name: 'ResetPassword',
+        name: 'LostPassword',
         components:{
-            PasswordResetForm
+            PasswordLostForm
         }
     }
 </script>
 
-
 <style scoped>
-    
+
 </style>

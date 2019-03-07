@@ -7,16 +7,21 @@
     class="lostpassword-form height-50"
     @submit="handleSubmit"
   >
+    <h1 class="auth-heading">Reset Your Password</h1>
+
     <a-form-item
       :validate-status="emailNameError() ? 'error' : ''"
       :help="emailNameError() || ''"
+      label="Account Email"
     >
       <a-input
         v-decorator="[
           'userName',
           {rules: [{ required: true, message: 'Please input your Email!' }]}
         ]"
-        placeholder="email"
+        placeholder="you@example.com"
+        type="email"
+        autocomplete="email"
       >
         <a-icon
           slot="prefix"
@@ -25,16 +30,23 @@
         />
       </a-input>
     </a-form-item>
-    <a-form-item>
+
+    <a-form-item class="align-right">
       <a-button
         type="primary"
         html-type="submit"
         :disabled="hasErrors(form.getFieldsError())"
       >
-        Lost Password
+        Reset Password
       </a-button>
     </a-form-item>
   </a-form>
+
+  <div class="align-center">
+    <router-link to="/signup" class="signup-btn">Signup</router-link>
+    <a-divider type="vertical" />
+    <router-link to="/login" class="login-form-forgot">Login</router-link>
+  </div>
 </div>
 </template>
 
@@ -74,27 +86,6 @@ export default {
 };
 </script>
 
-<style scoped>
-  #components-form-demo-normal-lostpassword .lostpassword-form {
-    max-width: 300px;
-  }
-  #components-form-demo-normal-lostpassword .lostpassword-form-forgot {
-    /* float: right; */
-  }
-  #components-form-demo-normal-lostpassword .lostpassword-form-btn {
-    width: 100%;
-  }
+<style>
 
-  .signup-btn, .reset-password-btn{
-    display: inline-block !important;
-    text-decoration: none;
-    padding: 15px;
-    background: #1ab188 !important;
-    color: #fff !important;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: .5s ease;
-    margin-right: 5px;
-  }
 </style>

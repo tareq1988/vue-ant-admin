@@ -8,7 +8,7 @@
             </a-row>
             <a-row type="flex" justify="space-around" align="middle">
                 <a-col :span="8">
-                    <login-form></login-form>
+                    <PasswordResetForm></PasswordResetForm>
                 </a-col>
             </a-row>
         </a-layout-content>
@@ -16,27 +16,16 @@
 </template>
 
 <script>
-    import LoginForm from '@/components/LoginForm.vue'
+import PasswordResetForm from '@/components/auth/PasswordResetForm.vue'
     export default {
-        name: 'LoginPage',
-        components: {
-            LoginForm,
-        },
+        name: 'ResetPassword',
+        components:{
+            PasswordResetForm
+        }
     }
 </script>
 
+
 <style scoped>
-  .body {
-    width: 100%;
-  }
-  .logo {
-    height: 80px;
-    width: 80px;
-  }
-  .login-box {
-    margin-top: 10%;
-  }
+
 </style>
-
-
-

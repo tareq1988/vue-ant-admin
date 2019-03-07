@@ -2,11 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store'
 import Home from './views/Home.vue'
-import Login from './views/Login.vue'
-import Logout from './views/Logout.vue'
-import Signup from './views/Signup.vue'
-import ResetPassword from './views/ResetPassword.vue'
-import LostPassword from './views/LostPassword.vue'
+import Login from './views/auth/Login.vue'
+import Logout from './views/auth/Logout.vue'
+import Signup from './views/auth/Signup.vue'
+import ResetPassword from './views/auth/ResetPassword.vue'
+import LostPassword from './views/auth/LostPassword.vue'
 import Profile from './views/Profile.vue'
 import ProfileEdit from './views/ProfileEdit.vue'
 import ProfileSecurity from './views/ProfileSecurity.vue'
@@ -99,7 +99,7 @@ const router = new VueRouter({
 
   router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-  
+
       if (!store.getters.isAuthenticated) {
         next({
           path: '/login',
@@ -111,7 +111,7 @@ const router = new VueRouter({
     } else {
       next()
     }
-  
+
     if (to.matched.some(record => record.meta.guestOnly)) {
       if (store.getters.isAuthenticated) {
         next({
@@ -123,6 +123,6 @@ const router = new VueRouter({
     } else {
       next()
     }
-  
+
   })
   export default router;

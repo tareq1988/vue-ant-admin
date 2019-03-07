@@ -1,40 +1,48 @@
 <template>
   <div>
     <a-form
-      id="components-form-demo-normal-login"
+      id="login-form"
       :form="form"
-      class="login-form height-50"
+      class="login-form"
       @submit="handleSubmit"
+      layout="vertical"
     >
+      <h1 class="auth-heading">Login</h1>
+
       <a-form-item
         :validate-status="userNameError() ? 'error' : ''"
         :help="userNameError() || ''"
+        label="Email Address"
       >
         <a-input
           v-decorator="[
             'userName',
-            {rules: [{ required: true, message: 'Please input your username!' }]}
+            {rules: [{ required: true, message: 'Please input your email address!' }]}
           ]"
-          placeholder="Username"
+          placeholder="E-mail address"
+          autocomplete="email"
         >
           <a-icon
             slot="prefix"
-            type="user"
+            type="mail"
             style="color:rgba(0,0,0,.25)"
           />
         </a-input>
       </a-form-item>
+
       <a-form-item
         :validate-status="passwordError() ? 'error' : ''"
         :help="passwordError() || ''"
+        label="Password"
       >
         <a-input
           v-decorator="[
             'password',
-            {rules: [{ required: true, message: 'Please input your Password!' }]}
+            {rules: [{ required: true, message: 'Please input your password!' }]}
           ]"
           type="password"
           placeholder="Password"
+          autocomplete="current-password"
         >
           <a-icon
             slot="prefix"
@@ -44,17 +52,7 @@
         </a-input>
       </a-form-item>
 
-      <div style="display:flex; justify-content:space-between">
-          <a-form-item >
-              <a-checkbox
-              > 
-                Remember me
-              </a-checkbox>
-          </a-form-item>
-          <router-link to="/lost-password" class="login-form-forgot" style="line-height: 39px;"> Forget Password</router-link>
-      </div>
-      
-      <a-form-item>
+      <a-form-item class="align-right">
         <a-button
           type="primary"
           html-type="submit"
@@ -66,10 +64,11 @@
         </a-button>
       </a-form-item>
     </a-form>
-    
-    <div style="display:flex; justify-content:space-between">
-      <router-link to="/signup" class="signup-btn">signup</router-link>
-      <router-link to="/reset-password" class="reset-password-btn">reset-password</router-link>
+
+    <div class="align-center">
+      <router-link to="/signup" class="signup-btn">Signup</router-link>
+      <a-divider type="vertical" />
+      <router-link to="/lost-password" class="login-form-forgot">Forgot Password</router-link>
     </div>
   </div>
 </template>
@@ -107,12 +106,11 @@ export default {
     },
     handleSubmit  (e) {
       e.preventDefault();
-      this.form.validateFields((err, values) => {
+      this.form.validateFields((err) => {
         if (!err) {
           this.loading = true;
           this.$store.dispatch('login');
           this.$router.push('/');
-          console.log('Received values of form: ', values);
         }
       });
     },
@@ -127,27 +125,48 @@ export default {
 </script>
 
 
-<style scoped>
-  #components-form-demo-normal-login .login-form {
-    max-width: 300px;
-  }
-  #components-form-demo-normal-login .login-form-forgot {
-    /* float: right; */
-  }
-  #components-form-demo-normal-login .login-form-btn {
-    width: 100%;
+<style lang="less">
+  .ant-form {
+
+    &.login-form,
+    &.signup-form,
+    &.lostpassword-form {
+      background: #fff;
+      padding: 15px 25px 5px 25px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.13);
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+
+    .auth-heading {
+      text-align: center;
+      border-bottom: 1px solid #f5f5f5;
+      padding-bottom: 10px;
+    }
+
+    .ant-form-item {
+      margin-bottom: 10px;
+    }
+
+    .ant-form-item-required:before {
+      content: '';
+    }
+
+    .ant-form-item-required::after {
+      display: inline-block;
+      margin-right: 4px;
+      content: '*';
+      line-height: 1;
+      font-size: 14px;
+      color: #f5222d;
+    }
   }
 
-  .signup-btn, .reset-password-btn{
-    display: inline-block !important;
-    text-decoration: none;
-    padding: 15px;
-    background: #1ab188 !important;
-    color: #fff !important;
-    font-size: 20px;
+  .align-right {
+    text-align: right;
+  }
+
+  .align-center {
     text-align: center;
-    cursor: pointer;
-    transition: .5s ease;
-    margin-right: 5px;
   }
 </style>
