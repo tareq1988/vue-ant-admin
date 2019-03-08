@@ -114,7 +114,7 @@ export default {
       const { getFieldError, isFieldTouched } = this.form;
       return isFieldTouched('confirmpassword') && getFieldError('confirmpassword');
     },
-    
+
 
     handleSubmit  (e) {
       e.preventDefault();

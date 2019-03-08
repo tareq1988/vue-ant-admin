@@ -10,5 +10,20 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.float-right {
+  float: right;
+}
+
+.ant-input-affix-wrapper .anticon {
+  color: rgba(0, 0, 0, 0.25);
+}
 </style>

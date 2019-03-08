@@ -27,7 +27,6 @@
             <a-icon
               slot="prefix"
               type="user"
-              style="color:rgba(0,0,0,.25)"
             />
           </a-input>
         </a-form-item>
@@ -50,7 +49,6 @@
             <a-icon
               slot="prefix"
               type="user"
-              style="color:rgba(0,0,0,.25)"
             />
           </a-input>
         </a-form-item>
@@ -73,7 +71,6 @@
         <a-icon
           slot="prefix"
           type="mail"
-          style="color:rgba(0,0,0,.25)"
         />
       </a-input>
     </a-form-item>
@@ -97,7 +94,6 @@
             <a-icon
               slot="prefix"
               type="lock"
-              style="color:rgba(0,0,0,.25)"
             />
           </a-input>
         </a-form-item>
@@ -121,7 +117,6 @@
             <a-icon
               slot="prefix"
               type="lock"
-              style="color:rgba(0,0,0,.25)"
             />
           </a-input>
         </a-form-item>

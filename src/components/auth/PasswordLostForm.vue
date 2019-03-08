@@ -25,7 +25,7 @@
       >
         <a-icon
           slot="prefix"
-          type="user"
+          type="mail"
           style="color:rgba(0,0,0,.25)"
         />
       </a-input>

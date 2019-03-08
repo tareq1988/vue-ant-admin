@@ -25,7 +25,6 @@
           <a-icon
             slot="prefix"
             type="mail"
-            style="color:rgba(0,0,0,.25)"
           />
         </a-input>
       </a-form-item>
@@ -44,11 +43,7 @@
           placeholder="Password"
           autocomplete="current-password"
         >
-          <a-icon
-            slot="prefix"
-            type="lock"
-            style="color:rgba(0,0,0,.25)"
-          />
+          <a-icon slot="prefix" type="lock" />
         </a-input>
       </a-form-item>
 
@@ -160,13 +155,5 @@ export default {
       font-size: 14px;
       color: #f5222d;
     }
-  }
-
-  .align-right {
-    text-align: right;
-  }
-
-  .align-center {
-    text-align: center;
   }
 </style>
