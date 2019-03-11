@@ -13,10 +13,10 @@ export default {
 <style lang="less">
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
-  font-size: 15px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  font-size: 1rem !important;
   line-height: 1.5 !important;
-  color: rgba(0, 0, 0, 0.65) !important;
+  color: #212529 !important;
   background-color: #fff !important;
   height: 100% !important;
   overflow-y: hidden !important;
