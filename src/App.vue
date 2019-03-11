@@ -13,12 +13,19 @@ export default {
 <style lang="less">
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 15px;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.65);
-  background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  color: rgba(0, 0, 0, 0.65) !important;
+  background-color: #fff !important;
+  height: 100% !important;
+  overflow-y: hidden !important;
 }
+
+#app {
+  height: 100%;
+}
+
 .align-right {
   text-align: right;
 }

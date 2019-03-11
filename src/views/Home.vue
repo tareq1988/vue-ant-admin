@@ -1,19 +1,36 @@
 <template>
-  <a-layout>
-    <a-layout>
+    <a-layout class="container">
         <Sidebar></Sidebar>
-        <a-layout>
+        <a-layout style="padding-top: 62px;">
             <Header></Header>
-            <a-layout-content :style="{ background: '#f6f8f8', padding: '24px', margin: 0, minHeight: '100%' }">
-                <div style="background-color: #f9f9f9; padding: 5px;margin-right: 20px">
+            <a-layout-content class="content-area">
+                <div style="">
                     <a-row :gutter="16">
                         <a-col :span="8" :style="{color:'#fff'}">
-                            <a-card title="Card title" :bordered=false :style="{background: '#7266ba',color:'#fff'}">
+                            <a-card title="Card title" :bordered=false :style="{color:'#fff'}">
                                 <p>card content</p>
                             </a-card>
                         </a-col>
                         <a-col :span="8" :style="{color:'#fff'}">
-                            <a-card title="Card title" :bordered=false :style="{background: '#23b7e5',color:'#fff'}">
+                            <a-card title="Card title" :bordered=false :style="{color:'#fff'}">
+                            <p>card content</p>
+                            </a-card>
+                        </a-col>
+                        <a-col :span="8">
+                            <a-card title="Card title" :bordered=false>
+                            <p>card content</p>
+                            </a-card>
+                        </a-col>
+                    </a-row>
+
+                    <a-row :gutter="16">
+                        <a-col :span="8" :style="{color:'#fff'}">
+                            <a-card title="Card title" :bordered=false :style="{color:'#fff'}">
+                                <p>card content</p>
+                            </a-card>
+                        </a-col>
+                        <a-col :span="8" :style="{color:'#fff'}">
+                            <a-card title="Card title" :bordered=false :style="{color:'#fff'}">
                             <p>card content</p>
                             </a-card>
                         </a-col>
@@ -42,8 +59,6 @@
         </a-layout>
 
     </a-layout>
-  </a-layout>
-
 </template>
 <script>
 import Sidebar from '@/components/Sidebar.vue'
@@ -60,11 +75,15 @@ export default {
 </script>
 
 <style>
-#components-layout-demo-top-side-2 .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255,255,255,.2);
-  margin: 16px 28px 16px 0;
-  float: left;
+.container {
+    height: 100%;
+}
+
+.content-area.ant-layout-content {
+    overflow-y: scroll;
+    padding: 24px;
+    background: #f3f5f8;
+    min-height: 100%;
+    margin: 0;
 }
 </style>
