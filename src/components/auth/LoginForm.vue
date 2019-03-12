@@ -19,13 +19,11 @@
             'userName',
             {rules: [{ required: true, message: 'Please input your email address!' }]}
           ]"
+          type="email"
           placeholder="E-mail address"
           autocomplete="email"
         >
-          <a-icon
-            slot="prefix"
-            type="mail"
-          />
+          <a-icon slot="prefix" type="mail"/>
         </a-input>
       </a-form-item>
 
@@ -43,7 +41,7 @@
           placeholder="Password"
           autocomplete="current-password"
         >
-          <a-icon slot="prefix" type="lock" />
+          <a-icon slot="prefix" type="lock"/>
         </a-input>
       </a-form-item>
 
@@ -54,35 +52,33 @@
           :loading="loading"
           :disabled="hasErrors(form.getFieldsError())"
           class="login-form-btn"
-        >
-          Log in
-        </a-button>
+        >Log in</a-button>
       </a-form-item>
     </a-form>
 
     <div class="align-center">
       <router-link to="/signup" class="signup-btn">Signup</router-link>
-      <a-divider type="vertical" />
+      <a-divider type="vertical"/>
       <router-link to="/lost-password" class="login-form-forgot">Forgot Password</router-link>
     </div>
   </div>
 </template>
 
 <script>
-function hasErrors (fieldsError) {
+function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 export default {
-  name: 'Login',
-  data () {
+  name: "Login",
+  data() {
     return {
       loading: false,
       iconLoading: false,
       hasErrors,
-      form: this.$form.createForm(this),
+      form: this.$form.createForm(this)
     };
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       // To disabled submit button at the beginning.
       this.form.validateFields();
@@ -90,70 +86,79 @@ export default {
   },
   methods: {
     // Only show error after a field is touched.
-    userNameError () {
+    userNameError() {
       const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched('userName') && getFieldError('userName');
+      return isFieldTouched("userName") && getFieldError("userName");
     },
     // Only show error after a field is touched.
-    passwordError () {
+    passwordError() {
       const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched('password') && getFieldError('password');
+      return isFieldTouched("password") && getFieldError("password");
     },
-    handleSubmit  (e) {
+    handleSubmit(e) {
       e.preventDefault();
-      this.form.validateFields((err) => {
+      this.form.validateFields(err => {
         if (!err) {
           this.loading = true;
-          this.$store.dispatch('login');
-          this.$router.push('/');
+
+          setTimeout(() => {
+            this.loading = false;
+            this.$store.dispatch("login", {
+              id: 1,
+              first_name: "Tareq",
+              last_name: "Hasan",
+              email: "tareq1988@gmail.com",
+              api_token: "1212121"
+            });
+            this.$router.push("/");
+          }, 1000);
         }
       });
     },
-    enterLoading () {
-      this.loading = true
+    enterLoading() {
+      this.loading = true;
     },
-    enterIconLoading () {
-      this.iconLoading = { delay: 1000 }
-    },
-  },
+    enterIconLoading() {
+      this.iconLoading = { delay: 1000 };
+    }
+  }
 };
 </script>
 
 
 <style lang="less">
-  .ant-form {
-
-    &.login-form,
-    &.signup-form,
-    &.lostpassword-form {
-      background: #fff;
-      padding: 15px 25px 5px 25px;
-      box-shadow: 0 1px 3px rgba(0,0,0,.13);
-      margin-bottom: 20px;
-      margin-top: 20px;
-    }
-
-    .auth-heading {
-      text-align: center;
-      border-bottom: 1px solid #f5f5f5;
-      padding-bottom: 10px;
-    }
-
-    .ant-form-item {
-      margin-bottom: 10px;
-    }
-
-    .ant-form-item-required:before {
-      content: '';
-    }
-
-    .ant-form-item-required::after {
-      display: inline-block;
-      margin-right: 4px;
-      content: '*';
-      line-height: 1;
-      font-size: 14px;
-      color: #f5222d;
-    }
+.ant-form {
+  &.login-form,
+  &.signup-form,
+  &.lostpassword-form {
+    background: #fff;
+    padding: 15px 25px 5px 25px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
+
+  .auth-heading {
+    text-align: center;
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 10px;
+  }
+
+  .ant-form-item {
+    margin-bottom: 10px;
+  }
+
+  .ant-form-item-required:before {
+    content: "";
+  }
+
+  .ant-form-item-required::after {
+    display: inline-block;
+    margin-right: 4px;
+    content: "*";
+    line-height: 1;
+    font-size: 14px;
+    color: #f5222d;
+  }
+}
 </style>

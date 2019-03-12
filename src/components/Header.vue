@@ -1,68 +1,67 @@
 <template>
-    <a-layout-header class="site-header"
-      :style="headerWidth"
-    >
-      <div class="collapse-button">
-        <a-icon
-          class="trigger"
-          :type="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="toggleSidebar"
-        />
-      </div>
-      <div class="right-menu">
-        <a-popover
-          title="Notifications"
-          trigger="click"
-        >
-          <div slot="content">Hello There</div>
-          <a-badge :dot="true" class="notification-icon"><a-icon type="bell" /></a-badge>
-        </a-popover>
-        <a-dropdown :trigger="['click']">
-          <a class="ant-dropdown-link profile-menu" href="#">
-            Hi, Tareq &nbsp;
-            <img src="https://www.gravatar.com/avatar/8584491809f902b86fae495a5830be83?s=128&d=retro&r=g" alt="Avatar">
-            <a-icon type="down" />
-          </a>
-          <a-menu slot="overlay">
-            <a-menu-item key="0">
-              <a href="http://www.alipay.com/">Profile</a>
-            </a-menu-item>
-            <a-menu-divider />
-            <a-menu-item key="3">Logout</a-menu-item>
-          </a-menu>
-        </a-dropdown>
-      </div>
-    </a-layout-header>
+  <a-layout-header class="site-header">
+    <div class="collapse-button" @click="toggleSidebar">
+      <a-icon class="trigger" :type="isCollapsed ? 'menu-unfold' : 'menu-fold'"/>
+    </div>
+    <div class="right-menu">
+      <a-popover title="Notifications" trigger="click">
+        <div slot="content">Hello There</div>
+        <a-badge :dot="true" class="notification-icon">
+          <a-icon type="bell"/>
+        </a-badge>
+      </a-popover>
+
+      <a-dropdown :trigger="['click']">
+        <a class="ant-dropdown-link profile-menu" href="#">
+          Hi, Tareq &nbsp;
+          <img
+            src="https://www.gravatar.com/avatar/8584491809f902b86fae495a5830be83?s=128&d=retro&r=g"
+            alt="Avatar"
+          >
+          <a-icon type="down"/>
+        </a>
+        <a-menu slot="overlay">
+          <a-menu-item>
+            <router-link to="/profile" class="ant-dropdown-link">
+              <a-icon type="user"/>Profile
+            </router-link>
+          </a-menu-item>
+          <a-menu-divider/>
+          <a-menu-item>
+            <router-link to="/logout" class="ant-dropdown-link">
+              <a-icon type="logout"/>Logout
+            </router-link>
+          </a-menu-item>
+        </a-menu>
+      </a-dropdown>
+    </div>
+  </a-layout-header>
 </template>
 
 <script>
 export default {
-  name: 'Header',
+  name: "Header",
 
   computed: {
     isCollapsed() {
-      return this.$store.getters.sidebar !== 'full'
+      return this.$store.getters.sidebar !== "full";
     },
 
-    headerWidth() {
-      let width = this.isCollapsed ? '80px' : '256px'
-
-      return {
-        width: 'calc(100% - ' + width + ')'
-      }
+    authUser() {
+      return this.$store.getters.user;
     }
   },
 
   methods: {
     toggleSidebar() {
-      let sidebar = this.$store.getters.sidebar
+      let sidebar = this.$store.getters.sidebar;
 
-      sidebar = ( sidebar == 'full' ) ? 'collapsed' : 'full'
+      sidebar = sidebar == "full" ? "collapsed" : "full";
 
-      this.$store.dispatch('setSidebar', sidebar)
+      this.$store.dispatch("setSidebar", sidebar);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -75,16 +74,14 @@ export default {
   position: fixed;
   top: 0;
   z-index: 1;
-  box-shadow: 4px 4px 40px 0 rgba(0,0,0,.05);
+  box-shadow: 4px 4px 40px 0 rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid #eee;
   padding: 0 34px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  &.ant-layout-sider-collapsed .brand {
-    font-size: 12px;
-  }
+  width: calc(100% - 256px);
+  transition: width 0.2s;
 
   .collapse-button {
     height: 62px;
@@ -133,5 +130,14 @@ export default {
       }
     }
   }
+}
+
+.sidebar-collapsed .ant-layout-header.site-header {
+  width: calc(100% - 80px);
+}
+
+.ant-dropdown-link .anticon {
+  min-width: 12px;
+  margin-right: 8px;
 }
 </style>

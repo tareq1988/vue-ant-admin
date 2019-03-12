@@ -1,16 +1,13 @@
 <template>
-    <div class="home">
-        Profile Security Page
-    </div>
+  <div class="home">Profile Security Page</div>
 </template>
 
 <script>
-    export default {
-        name: 'ProfileSecurity'
-    }
+export default {
+  name: "ProfileSecurity"
+};
 </script>
 
 
 <style scoped>
-    
 </style>
