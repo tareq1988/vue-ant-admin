@@ -13,11 +13,8 @@
 
       <a-dropdown :trigger="['click']">
         <a class="ant-dropdown-link profile-menu" href="#">
-          Hi, Tareq &nbsp;
-          <img
-            src="https://www.gravatar.com/avatar/8584491809f902b86fae495a5830be83?s=128&d=retro&r=g"
-            alt="Avatar"
-          >
+          Hi, {{ user.first_name }} &nbsp;
+          <img :src="user.avatar" alt="Avatar">
           <a-icon type="down"/>
         </a>
         <a-menu slot="overlay">
@@ -47,7 +44,7 @@ export default {
       return this.$store.getters.sidebar !== "full";
     },
 
-    authUser() {
+    user() {
       return this.$store.getters.user;
     }
   },
@@ -69,7 +66,6 @@ export default {
 .ant-layout-header.site-header {
   background: #fff;
   height: 62px;
-  width: 100%;
   line-height: 62px;
   position: fixed;
   top: 0;

@@ -5,6 +5,8 @@
       <Header></Header>
       <a-layout-content class="content-area">
         <router-view></router-view>
+
+        <footer class="admin-footer">&copy; 2019, The Company.</footer>
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -34,13 +36,15 @@ export default {
 
 .ant-layout.content-main {
   background: #f3f5f8;
-  margin-top: 62px;
-  position: fixed;
-  top: 0;
-  left: 256px;
-  height: calc(100% - 62px);
+  padding-top: 62px;
+  // position: fixed;
+  // top: 0;
+  // left: 256px;
+  height: 100vh;
   width: calc(100% - 256px);
+  overflow-y: scroll;
   overflow: auto;
+  flex: 1 1;
 }
 
 .sidebar-collapsed .ant-layout.content-main {
@@ -53,6 +57,7 @@ export default {
   min-height: 100%;
   margin: 0 auto;
   max-width: 96%;
+  min-height: calc(100% - 62px);
   padding-bottom: 20px;
 
   &::after {
@@ -60,6 +65,15 @@ export default {
     content: "";
     clear: both;
   }
+}
+
+.admin-footer {
+  margin-top: 30px;
+  padding: 10px 0 20px 0;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  color: #666;
+  text-align: center;
 }
 
 @media (min-width: 1200px) {

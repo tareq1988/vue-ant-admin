@@ -17,6 +17,14 @@ export default new Vuex.Store({
       return state.isAuthenticated
     },
 
+    user(state) {
+      if (!state.isAuthenticated) {
+        return null;
+      }
+
+      return state.user;
+    },
+
     theme(state) {
       return state.theme;
     },
@@ -37,6 +45,7 @@ export default new Vuex.Store({
         first_name: payload.first_name,
         last_name: payload.last_name,
         email: payload.email,
+        avatar: payload.avatar
       };
 
       localStorage.setItem('user', JSON.stringify(state.user))

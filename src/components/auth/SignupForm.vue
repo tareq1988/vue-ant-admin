@@ -107,6 +107,13 @@
         </a-col>
       </a-row>
 
+      <a-form-item v-bind="tailFormItemLayout">
+        <a-checkbox v-decorator="['agreement', {valuePropName: 'checked'}]">
+          I have read the
+          <a href>agreement</a>
+        </a-checkbox>
+      </a-form-item>
+
       <a-form-item class="align-right">
         <a-button
           type="primary"
@@ -132,7 +139,19 @@ export default {
   data() {
     return {
       hasErrors,
-      form: this.$form.createForm(this)
+      form: this.$form.createForm(this),
+      tailFormItemLayout: {
+        wrapperCol: {
+          xs: {
+            span: 24,
+            offset: 0
+          },
+          sm: {
+            span: 16,
+            offset: 0
+          }
+        }
+      }
     };
   },
   mounted() {

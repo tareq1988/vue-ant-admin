@@ -27,11 +27,10 @@
         </a-input>
       </a-form-item>
 
-      <a-form-item
-        :validate-status="passwordError() ? 'error' : ''"
-        :help="passwordError() || ''"
-        label="Password"
-      >
+      <a-form-item :validate-status="passwordError() ? 'error' : ''" :help="passwordError() || ''">
+        <template slot="label">Password
+          <router-link to="/lost-password" class="login-form-forgot">Lost your password?</router-link>
+        </template>
         <a-input
           v-decorator="[
             'password',
@@ -56,10 +55,8 @@
       </a-form-item>
     </a-form>
 
-    <div class="align-center">
+    <div class="align-center">Need an account?
       <router-link to="/signup" class="signup-btn">Signup</router-link>
-      <a-divider type="vertical"/>
-      <router-link to="/lost-password" class="login-form-forgot">Forgot Password</router-link>
     </div>
   </div>
 </template>
@@ -101,15 +98,18 @@ export default {
         if (!err) {
           this.loading = true;
 
+          let user = {
+            id: 1,
+            first_name: "Britney",
+            last_name: "Cooper",
+            email: "john@doe.com",
+            api_token: "1212121",
+            avatar: "https://randomuser.me/api/portraits/women/63.jpg"
+          };
+
           setTimeout(() => {
             this.loading = false;
-            this.$store.dispatch("login", {
-              id: 1,
-              first_name: "Tareq",
-              last_name: "Hasan",
-              email: "tareq1988@gmail.com",
-              api_token: "1212121"
-            });
+            this.$store.dispatch("login", user);
             this.$router.push("/");
           }, 1000);
         }
@@ -136,6 +136,11 @@ export default {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
     margin-bottom: 20px;
     margin-top: 20px;
+  }
+
+  a.login-form-forgot {
+    float: right;
+    font-size: 13px;
   }
 
   .auth-heading {

@@ -1,5 +1,5 @@
 <template>
-  <div class="login-page">
+  <div class="auth-page">
     <a-row>
       <a-col type="flex" justify="space-around" class="login-box" align="middle">
         <router-link to="/">
@@ -25,17 +25,18 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 body {
   background-color: #f1f3f3 !important;
 }
 
-.login-page {
+.auth-page {
   padding: 110px 0 144px;
-}
-.logo {
-  height: 80px;
-  width: 80px;
+
+  .logo {
+    height: 80px;
+    width: 80px;
+  }
 }
 </style>
 
